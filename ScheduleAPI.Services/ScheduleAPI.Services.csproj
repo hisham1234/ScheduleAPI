@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ScheduleAPI.DataAccess\ScheduleAPI.DataAccess.csproj" />
+    <ProjectReference Include="..\ScheduleAPI.Models\ScheduleAPI.Models.csproj" />
+  </ItemGroup>
+
+</Project>
