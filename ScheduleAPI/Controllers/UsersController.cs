@@ -33,7 +33,7 @@ namespace ScheduleAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Schedule> AddUser(User user)
+        public ActionResult<User> AddUser(User user)
         {
             if(ModelState.IsValid)
             {
