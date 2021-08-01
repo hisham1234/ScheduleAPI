@@ -66,12 +66,14 @@ namespace ScheduleAPI.Controllers
                 else
                 {
                     var updatedSchedule = _scheduleRepository.UpdateSchedule(id, schedule);
+                    _logger.LogInformation("Successfully Updated");
                     return CreatedAtRoute("GetSchedule", new { id = updatedSchedule.Id }, updatedSchedule);
                 }
                   
             }
             catch(Exception ex)
             {
+                _logger.LogInformation("Error Occured while updating " + ex.Message);
                 return StatusCode(500);
             }
            
