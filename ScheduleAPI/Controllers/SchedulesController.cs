@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ScheduleAPI.Services.Schedules;
 using ScheduleAPI.Models;
+using Microsoft.Extensions.Logging;
 
 namespace ScheduleAPI.Controllers
 {
@@ -14,9 +15,11 @@ namespace ScheduleAPI.Controllers
     public class SchedulesController : ControllerBase
     {
         private IScheduleRepository _scheduleRepository;
-        public SchedulesController(IScheduleRepository scheduleRepository)
+        private readonly ILogger _logger;
+        public SchedulesController(IScheduleRepository scheduleRepository, ILogger<SchedulesController> logger)
         {
             _scheduleRepository = scheduleRepository;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -24,6 +27,7 @@ namespace ScheduleAPI.Controllers
         public IActionResult GetSchedules(int userid,string title, DateTime? startDateTime)
         {
             var schedules = _scheduleRepository.GetAllSchedules(userid,title,startDateTime);
+            _logger.LogInformation("Get Schedules Called");
             return Ok(schedules);
         }
 

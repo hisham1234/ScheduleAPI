@@ -7,6 +7,7 @@ using ScheduleAPI.Models;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 
 namespace ScheduleAPI.Test
 {
@@ -22,9 +23,9 @@ namespace ScheduleAPI.Test
 
             int expectedCount = 1;
             var scheduleService =new ScheduleService();
-            
-            var controller = new SchedulesController(scheduleService);
-
+            var logger=A.Fake<ILogger<SchedulesController>>();
+           var controller = new SchedulesController(scheduleService, logger);
+           
             //Act
             var actionResult = controller.GetSchedules(userid, title, null);
 
